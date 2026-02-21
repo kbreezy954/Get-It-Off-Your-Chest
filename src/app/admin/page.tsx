@@ -4,8 +4,7 @@ import { getAnalytics } from '@/lib/analytics';
 
 async function toggleBan(userId: string, banned: boolean) {
   'use server';
-  const supabase = await createClient();
-await supabase
+const supabase: any = await createClient();await supabase
   .from('users' as any)
   .update({ is_banned: banned } as any)
   .eq('id', userId);}
