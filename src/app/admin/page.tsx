@@ -5,8 +5,10 @@ import { getAnalytics } from '@/lib/analytics';
 async function toggleBan(userId: string, banned: boolean) {
   'use server';
   const supabase = await createClient();
-  await supabase.from('users').update({ is_banned: banned }).eq('id', userId);
-}
+await supabase
+  .from('users' as any)
+  .update({ is_banned: banned } as any)
+  .eq('id', userId);}
 
 async function deletePost(postId: string) {
   'use server';
